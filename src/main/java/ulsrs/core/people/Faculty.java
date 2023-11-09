@@ -35,4 +35,9 @@ public class Faculty extends Person{
     public void setTitle(String title) {
         this.title = title;
     }
+
+    @Override
+    public String returnRelevantInfo(){
+        return super.returnRelevantInfo() + employeeId + "," + department + "," + title;
+    }
 }

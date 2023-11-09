@@ -44,4 +44,8 @@ public abstract class Person {
     public void setAddress(String address) {
         this.address = address;
     }
+
+    public String returnRelevantInfo(){
+        return firstName + "," + lastName + "," + age + "," + address + ",";
+    }
 }
