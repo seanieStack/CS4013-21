@@ -25,4 +25,9 @@ public class Department extends Person{
     public void setDepartment(String department) {
         this.department = department;
     }
+
+    @Override
+    public String returnRelevantInfo(){
+        return super.returnRelevantInfo() + departmentId + "," + department;
+    }
 }

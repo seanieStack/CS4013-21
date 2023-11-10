@@ -36,4 +36,9 @@ public class Student extends Person{
     public void setQCA(double QCA) {
         this.QCA = QCA;
     }
+
+    @Override
+    public String returnRelevantInfo(){
+        return super.returnRelevantInfo() + studentId + "," + course + "," + QCA;
+    }
 }
