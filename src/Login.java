@@ -1,13 +1,14 @@
+import java.util.ArrayList;
+import java.util.List;
 
-public class Login {
 
-//Import SQL Login info 
+public class Login  {
 
 private String username ;
 private String password ;    
-private String dbUsername ;
-private String dbPassword ;
 private String divison ;
+
+CsvReader reader = new CsvReader() ; // Create a CSV reader object to validate login details
 /**
  * @param  Username , this is the University number of the user logging in
  * @param  Password , this is the unqiue password of the user logging in 
@@ -19,7 +20,8 @@ public Login () {
 }
 
 
-public Login ( String username , String password) {
+
+public Login ( String username , String password) { //Default constructor 
     this.username = username ;
     this.password = password ;
 }
@@ -30,42 +32,44 @@ public void setDivison (String divison) { // Method to set Divison
     this.divison = divison ;
 }
 
-public String getUsernameFromDb(String division, String username) {
-    String dbUsername = null;
-    String sqlStmt = "SELECT Username FROM users WHERE Division = " + division + "AND Username = "+ username;
-    // More code required here to execute statement , probably using DB_Config file 
-    return dbUsername;
-}
-
-public String getPwFromDb(String division, String username) {
-    String dbPw = null;
-    String sqlStmt = "SELECT password FROM users WHERE Division = " + division + "AND Username = "+ username;
-    // More code required here to execute statement , probably using DB_Config file 
-    return dbPw;
+public String getDivison () { //Method to get divison
+    return divison ; 
 }
 
 
+public boolean correctLogin(String searchUsername, String searchPassword, String searchDivision) {
+    List<String[]> searchResults = new ArrayList<>();
+    boolean loggedIn = false ; 
+    for (String[] row : reader.CsvSearch("Data/LoginInfo.csv")) { // For reference this is how filepaths should be formatted 
+        // Assuming the order is username, password, division
+        String username = row[0];
+        String password = row[1];
+        String division = row[2];
 
-
-
-public boolean usernameIsCorrect( String username) { // Needs Divison search for both username and PW methods 
-boolean state = false ;   
-getUsernameFromDb( divison , username) ; 
-if ( username == getUsernameFromDb( divison , username) ) {
-    state = true ;
-    }
-   return state ;
-}
-
-public boolean pwIsCorrect( String username ,String password) {
-    boolean state = false ;    
-    if ( password == getPwFromDb(divison, username) ) {
-        state = true ;
+        // Check if the row matches the search criteria
+        if (username.equals(searchUsername) && password.equals(searchPassword) && division.equals(searchDivision)) {
+            searchResults.add(row);
+            loggedIn = true ;
         }
-       return state ;
     }
+    return loggedIn ;
+}
 
+public boolean correctDivison(String searchUsername, String searchPassword, String searchDivision) {
+    for (String[] row : reader.CsvSearch("Data/LoginInfo.csv")) {
+        // Assuming the order is username, password, division
+        String username = row[0];
+        String password = row[1];
+        String division = row[2];
 
+        // Check if the row matches the search criteria
+        if (username.equals(searchUsername) && password.equals(searchPassword) && !division.equals(searchDivision)) {
+            return true; // Return true immediately if a match is found
+        }
+    }
+    return false; // Return false if no match is found
+}
+// Edit these methods later to avvoid code duplication
 
 
 }
