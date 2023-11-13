@@ -8,7 +8,7 @@ private String username ;
 private String password ;    
 private String divison ;
 
-CsvReader reader = new CsvReader() ; // Create a CSV reader object to validate login details
+CsvReader reader = new CsvReader(); // Create a CSV reader object to validate login details
 /**
  * @param  Username , this is the University number of the user logging in
  * @param  Password , this is the unqiue password of the user logging in 
@@ -34,6 +34,14 @@ public void setDivison (String divison) { // Method to set Divison
 
 public String getDivison () { //Method to get divison
     return divison ; 
+}
+
+public void setUsername( String username) {
+    this.username = username ; 
+}
+
+public String getUsername() {
+    return username ;
 }
 
 
@@ -71,5 +79,20 @@ public boolean correctDivison(String searchUsername, String searchPassword, Stri
 }
 // Edit these methods later to avvoid code duplication
 
+public boolean isStudent(String studentNumber, String searchDivision) {
+    List<String[]> searchResults = new ArrayList<>(); 
+    for (String[] row : reader.CsvSearch("Data/LoginInfo.csv")) { // For reference this is how filepaths should be formatted 
+        // Assuming the order is username, password, division
+        String username = row[0];
+    
+        String division = row[2];
 
+        // Check if the row matches the search criteria
+        if (username.equals(studentNumber)  && division.equals(searchDivision)) {
+            searchResults.add(row);
+            return true ;
+        }
+    }
+    return false ;
+}
 }
