@@ -22,21 +22,21 @@ public class QcaCalc {
         gradeQcaMap.put("M",0.0);
         gradeQcaMap.put("P",0.0);
         gradeQcaMap.put("N",0.0);
-        
+
         // Add G,I,M,P and N grades at later stage
         // Needs some logic for if credits awarded or not ...
     }
 
-    
+
 
     public double getCummulativeQca ( String ... grades) { // I used to Varargs here instead of method overloading for more clean and readable code
-        int numModules = grades.length ;
-        double cummulativeQca = 0.00 ; 
+        int numModules = grades.length;
+        double cummulativeQca = 0.00;
 
         for (String grade : grades) {
             cummulativeQca += (gradeQcaMap.get(grade)) / numModules;
 
-        } 
-        return cummulativeQca ;
+        }
+        return cummulativeQca;
     }
 }

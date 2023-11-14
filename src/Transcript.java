@@ -7,8 +7,8 @@ public class Transcript {
     // This class deals with all the formatting of the student Transcript 
     private String action ;
 
-    CsvReader reader = new CsvReader() ;
-    CsvWriter writer = new CsvWriter () ;
+    CsvReader reader = new CsvReader();
+    CsvWriter writer = new CsvWriter();
     Login login = new Login();
 
     public String printCentered(String text, int width) {
@@ -18,14 +18,14 @@ public class Transcript {
         text = String.format("%" + padStart + "s", text);
         text = String.format("%-" + width  + "s", text);
         
-        return text ;
+        return text;
     }
 
     public String currentDate() {
         LocalDate today = LocalDate.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MMM/yyyy");
         String formattedDate = today.format(formatter);
-        return formattedDate ;
+        return formattedDate;
 
     }
 
@@ -52,23 +52,23 @@ public class Transcript {
     }
 
     public void setRequest (String action ) { // To be added to printTranscript method
-         this.action = action ; 
+         this.action = action;
     }
 
     public String getRequest () {
-        return action  ;
+        return action;
     }
 
     public String formatRequest () {
         String username = login.getUsername() ; 
-        String firstName = getData(username, 4) ; 
-        String secondName = getData(username, 5) ;
+        String firstName = getData(username, 4);
+        String secondName = getData(username, 5);
         return firstName + " " + secondName + " " + getRequest();
     }
 
     public void recordRequest() {
-        String request = formatRequest() ; 
-        writer.modifySpecificRowInCsv("Data/StudentResults.csv", 1, "request") ;
+        String request = formatRequest();
+        writer.modifySpecificRowInCsv("Data/StudentResults.csv", 1, "request");
     }
 
     public String printTranscript (String studentNumber) { // Edit to take String username as parameter , this will be used as the key to search

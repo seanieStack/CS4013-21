@@ -4,9 +4,9 @@ import java.util.List;
 
 public class Login  {
 
-private String username ;
-private String password ;    
-private String divison ;
+private String username;
+private String password;
+private String division;
 
 CsvReader reader = new CsvReader(); // Create a CSV reader object to validate login details
 /**
@@ -28,20 +28,20 @@ public Login ( String username , String password) { //Default constructor
 /**
  * @param Divison , This is the division the student belongs to i.e. either Student, Faculty or Department 
  */
-public void setDivison (String divison) { // Method to set Divison
-    this.divison = divison ;
+public void setDivision(String division) { // Method to set Divison
+    this.division = division;
 }
 
-public String getDivison () { //Method to get divison
-    return divison ; 
+public String getDivision() { //Method to get divison
+    return division;
 }
 
 public void setUsername( String username) {
-    this.username = username ; 
+    this.username = username;
 }
 
 public String getUsername() {
-    return username ;
+    return username;
 }
 
 
@@ -57,10 +57,10 @@ public boolean correctLogin(String searchUsername, String searchPassword, String
         // Check if the row matches the search criteria
         if (username.equals(searchUsername) && password.equals(searchPassword) && division.equals(searchDivision)) {
             searchResults.add(row);
-            loggedIn = true ;
+            loggedIn = true;
         }
     }
-    return loggedIn ;
+    return loggedIn;
 }
 
 public boolean correctDivison(String searchUsername, String searchPassword, String searchDivision) {
