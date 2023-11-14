@@ -1,5 +1,3 @@
-package main.java.ulsrs.data;
-
 import main.java.ulsrs.core.people.*;
 
 import java.io.FileWriter;
