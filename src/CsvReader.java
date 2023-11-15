@@ -3,12 +3,14 @@ import java.io.FileReader;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class CsvReader {
 
     private String csvFilePath ; 
-    private List<String[]> csvData = new ArrayList<>();
+    private final List<String[]> csvData = new ArrayList<>();
 
     // Constructor that reads the CSV data
     public List<String[]> CsvSearch (String csvFilePath) {
@@ -22,5 +24,18 @@ public class CsvReader {
             e.printStackTrace();
         }
         return csvData ; 
+    }
+
+    public Map<String, Double> readGrade(String fileName){
+        Map<String, Double> grades = new HashMap<>();
+        try(BufferedReader br = new BufferedReader(new FileReader(fileName))){
+            String line;
+            while((line = br.readLine()) != null){
+                grades.put(line.split(",")[0], Double.valueOf(line.split(",")[1]));
+            }
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+        return grades;
     }
 }
