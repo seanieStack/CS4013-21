@@ -9,10 +9,7 @@ private String password;
 private String division;
 
 CsvReader reader = new CsvReader(); // Create a CSV reader object to validate login details
-/**
- * @param  Username , this is the University number of the user logging in
- * @param  Password , this is the unqiue password of the user logging in 
- */
+
 
 public Login () {
     username = "" ; // Left empty for now 
@@ -25,14 +22,12 @@ public Login ( String username , String password) { //Default constructor
     this.username = username ;
     this.password = password ;
 }
-/**
- * @param Divison , This is the division the student belongs to i.e. either Student, Faculty or Department 
- */
-public void setDivision(String division) { // Method to set Divison
+
+public void setDivision(String division) { // Method to set Division
     this.division = division;
 }
 
-public String getDivision() { //Method to get divison
+public String getDivision() { //Method to get division
     return division;
 }
 
@@ -48,7 +43,7 @@ public String getUsername() {
 public boolean correctLogin(String searchUsername, String searchPassword, String searchDivision) {
     List<String[]> searchResults = new ArrayList<>();
     boolean loggedIn = false ; 
-    for (String[] row : reader.CsvSearch("Data/LoginInfo.csv")) { // For reference this is how filepaths should be formatted 
+    for (String[] row : reader.CsvSearch("Data/LoginInfo.csv")) { // For reference this is how file paths should be formatted
         // Assuming the order is username, password, division
         String username = row[0];
         String password = row[1];
@@ -77,7 +72,7 @@ public boolean correctDivison(String searchUsername, String searchPassword, Stri
     }
     return false; // Return false if no match is found
 }
-// Edit these methods later to avvoid code duplication
+// Edit these methods later to avoid code duplication
 
 public boolean isStudent(String studentNumber, String searchDivision) {
     List<String[]> searchResults = new ArrayList<>(); 
@@ -90,9 +85,9 @@ public boolean isStudent(String studentNumber, String searchDivision) {
         // Check if the row matches the search criteria
         if (username.equals(studentNumber)  && division.equals(searchDivision)) {
             searchResults.add(row);
-            return true ;
+            return true;
         }
     }
-    return false ;
+    return false;
 }
 }

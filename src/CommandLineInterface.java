@@ -1,9 +1,6 @@
 import java.util.Scanner;
-public class Cli {
-    
-
-
- public static void main(String[] args) {
+public class CommandLineInterface {
+ public void run() {
     Scanner scanner = new Scanner(System.in ) ;
     Login login = new Login() ;
     QcaCalc qcaCalculator = new QcaCalc() ;
@@ -38,34 +35,32 @@ public class Cli {
         }
     }
 
-    if (selectionPassed) {
-    System.out.println("Please enter your username (University Number) ");
-    System.out.println("----------------------------------------------------------------");
+     System.out.println("Please enter your username (University Number) ");
+     System.out.println("----------------------------------------------------------------");
 
-    String username = scanner.nextLine();
-    login.setUsername(username);
-    
-    System.out.println("Please enter your password ");
-    System.out.println("----------------------------------------------------------------");
-    String password = scanner.nextLine();
+     String username = scanner.nextLine();
+     login.setUsername(username);
 
-    if (login.correctLogin(username, password, login.getDivision())) {
-        System.out.println("You have succsessfully logged in ! ") ;
-        System.out.println("----------------------------------------------------------------");
+     System.out.println("Please enter your password ");
+     System.out.println("----------------------------------------------------------------");
+     String password = scanner.nextLine();
 
-    } else if ( username.length() != 8 || password.length() != 6 ) {
-        System.out.println("Please enter the correct length Username and password , Username is 8 characthers and password is 6 characthers");
-    } 
-    else if ( login.correctDivison(username, password, login.getDivision())) { // Boolean states may need some work
-        System.out.println( "This username and password belongs to the " + login.getDivision() + " division, not the division you have chosen"); // This line is incorrect
-    }
-    else {
-        System.out.println("Please enter the correct username and password !");
-    } 
-}
+     if (login.correctLogin(username, password, login.getDivision())) {
+         System.out.println("You have succsessfully logged in ! ") ;
+         System.out.println("----------------------------------------------------------------");
+
+     } else if ( username.length() != 8 || password.length() != 6 ) {
+         System.out.println("Please enter the correct length Username and password , Username is 8 characters and password is 6 characters");
+     }
+     else if ( login.correctDivison(username, password, login.getDivision())) { // Boolean states may need some work
+         System.out.println( "This username and password belongs to the " + login.getDivision() + " division, not the division you have chosen"); // This line is incorrect
+     }
+     else {
+         System.out.println("Please enter the correct username and password !");
+     }
 
 
-    String division =  login.getDivision();
+     String division =  login.getDivision();
     if (division.equals("Student")) {
     System.out.println("Enter your command , (C)alculate QCA , (V)iew Transcript,(R)equest action" );
     System.out.println("----------------------------------------------------------------");
