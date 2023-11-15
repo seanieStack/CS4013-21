@@ -1,4 +1,3 @@
-import java.util.HashMap;
 import java.util.Map;
 
 public class QcaCalc {
@@ -7,7 +6,6 @@ public class QcaCalc {
     static {
         CsvReader reader = new CsvReader();
         gradeQcaMap = reader.readGrade("data/grades.csv");
-        reader = null;
     }
 
 

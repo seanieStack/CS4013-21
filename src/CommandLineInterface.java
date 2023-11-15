@@ -14,21 +14,16 @@ public class CommandLineInterface {
                 case "S" -> {
                     login.setDivision("Student");
                     selectionPassed = true;
-                    break;
                 }
                 case "F" -> {
                     login.setDivision("Faculty");
                     selectionPassed = true;
-                    break;
                 }
                 case "D" -> {
                     login.setDivision("Department");
                     selectionPassed = true;
-                    break;
                 }
-                default -> {
-                    System.out.println("Invalid command line Usage , Please select a valid option ");
-                }
+                default -> System.out.println("Invalid command line Usage , Please select a valid option ");
             }
         }
 
@@ -45,7 +40,7 @@ public class CommandLineInterface {
          } else if (username.length() != 8 || password.length() != 6 ) {
              System.out.println("Please enter the correct length Username and password , Username is 8 characters and password is 6 characters");
          }
-         else if (login.correctDivison(username, password, login.getDivision())) {
+         else if (login.correctDivision(username, password, login.getDivision())) {
              //FIXME This doesnt work, Something to do with booleans
              System.out.println( "This username and password belongs to the " + login.getDivision() + " division, not the division you have chosen");
          }
@@ -69,9 +64,7 @@ public class CommandLineInterface {
                     System.out.println("Cummulative QCA is " + String.format("%.2f", qcaCalculator.getCummulativeQca(grades)) + " for the " + grades.length + " modules you have taken");
                 }
 
-                case "V" -> {
-                    System.out.println(transcript.printTranscript(login.getUsername()));
-                }
+                case "V" -> System.out.println(transcript.printTranscript(login.getUsername()));
 
                 case "R" -> {
                     System.out.println("Enter your command, (R)equest repeat , (L)ink in module , (Y)ear repeat , (S)emester repeat");
@@ -87,7 +80,6 @@ public class CommandLineInterface {
                             transcript.setRequest(" has requested to repeat module: " + commandModule);
                             transcript.recordRequest(); // Add to CSV file
 
-                            break;
                         }
                         case "L" -> {
                             System.out.println("Enter Module code for your requested Link-in module");
@@ -98,7 +90,6 @@ public class CommandLineInterface {
 
                             // Add to student transcript method
                             System.out.println("Your link in module request has being registered and is reflected on your transcript ");
-                            break;
                         }
                         case "Y" -> {
                             System.out.println("Enter the academic year in which you wish to repeat");
@@ -111,7 +102,6 @@ public class CommandLineInterface {
                             System.out.println("Your repeat request has being registered and is reflected on your transcript ");
                             transcript.recordRequest(); // Add to CSV file
                             transcript.setRequest(" has requested to repeat AY : " + commandYear);
-                            break;
                         }
                         case "S" -> {
                             System.out.println("Enter the Semester and AY in which you wish to repeat");
@@ -124,7 +114,6 @@ public class CommandLineInterface {
                             transcript.setRequest(" has requested to repeat semester : " + commandSemester);
                             transcript.recordRequest(); // Add to CSV file
                             System.out.println("Your repeat request has being registered and is reflected on your transcript ");
-                            break;
                         }
                     }
                 }

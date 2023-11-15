@@ -1,7 +1,5 @@
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Transcript {
     // This class deals with all the formatting of the student Transcript 
@@ -41,7 +39,7 @@ public class Transcript {
         return null; // or return an empty string if no match is found
     }
 
-    public String abbreivation (String studentNumber) {
+    public String abbreviation(String studentNumber) {
         if (getData(studentNumber,3).equals("Male")) {
             return "MR" ;
         }
@@ -82,20 +80,20 @@ public class Transcript {
                 "|"+currentDate()+"  Full Student Transcript                                       "+ studentNumber +"             |" + "\n" +
                 "|                                                                                                |" + "\n" +
                 "+------------------------------------------------------------------------------------------------+" + "\n" +
-                "Name "+ abbreivation(studentNumber)+"        "+getData(studentNumber, 4)+"        "+getData(studentNumber, 6) + "                                                  " + "\n" +
+                "Name "+ abbreviation(studentNumber)+"        "+getData(studentNumber, 4)+"        "+getData(studentNumber, 6) + "                                                  " + "\n" +
                 "Address "+ getData(studentNumber, 6) +"                                                                                     " + "\n" +
                 "        "+ getData(studentNumber, 7) +"                                                                                       " + "\n" +
                 "        "+ getData(studentNumber,8) +"                                                       Telephone  "+ getData(studentNumber, 9) +"             " + "\n" +
                 "                                                                                                  " + "\n" +
                 "                                                                                                  " + "\n" +
                 "Status    "+ getData(studentNumber, 10) +"                              Batch   (random number)                            " + "\n" +
-                "Course    "+ getData(studentNumber, 10) +"                              Adivisor                                           " + "\n" +
+                "Course    "+ getData(studentNumber, 10) +"                              Advisor                                           " + "\n" +
                 "Programme "+ getData(studentNumber, 10) +"                              Award                                              " + "\n" +
                 "Route     "+ getData(studentNumber, 11) +"                                            Class                                              ";
                 
 
             // FIXME: this shit fucked
-             //   public String printTranscriptModules () { // Unkown error in this 
+             //   public String printTranscriptModules () { // Unknown error in this
 
              //   return "+-----------------------------------------------------------------+------------------------------+" + "\n" +
              //   "| AY           SEMx     Part 1                                    |               Session To-Date|" + "\n" +

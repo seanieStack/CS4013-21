@@ -5,7 +5,7 @@ import java.util.List;
 public class Login  {
 
 private String username;
-private String password;
+private final String password;
 private String division;
 
 CsvReader reader = new CsvReader(); // Create a CSV reader object to validate login details
@@ -60,7 +60,7 @@ public boolean correctLogin(String searchUsername, String searchPassword, String
     return loggedIn;
 }
 
-public boolean correctDivison(String searchUsername, String searchPassword, String searchDivision) {
+public boolean correctDivision(String searchUsername, String searchPassword, String searchDivision) {
     for (String[] row : reader.CsvSearch("data/LoginInfo.csv")) {
         // Assuming the order is username, password, division
         String username = row[0];
@@ -80,7 +80,7 @@ public boolean isStudent(String studentNumber, String searchDivision) {
     // TODO: searchResult is never used
     List<String[]> searchResults = new ArrayList<>(); 
     for (String[] row : reader.CsvSearch("Data/LoginInfo.csv")) {
-        // For reference this is how filepaths should be formatted
+        // For reference this is how file paths should be formatted
         // Assuming the order is username, password, division
         String username = row[0];
     
