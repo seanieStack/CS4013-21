@@ -24,15 +24,14 @@ public class Transcript {
     public String currentDate() {
         LocalDate today = LocalDate.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MMM/yyyy");
-        String formattedDate = today.format(formatter);
-        return formattedDate;
+        return today.format(formatter);
 
     }
 
     //Row ordering 3 = Gender, 4 = Firstname , 5 = Lastname , 6= Address 1 ,7 = Address 2 , 8 = Address 3 , 9 = Telephone ,10 = course , 11 = route 
 
     public String getData(String studentNumber, int columnIndex) { //Change column index later to take String and not INT
-        for (String[] row : reader.CsvSearch("Data/LoginInfo.csv")) {
+        for (String[] row : reader.CsvSearch("data/LoginInfo.csv")) {
             String username = row[0];
     
             if (username.equals(studentNumber) && row.length > columnIndex) {
@@ -71,7 +70,9 @@ public class Transcript {
         writer.modifySpecificRowInCsv("Data/StudentResults.csv", 1, "request");
     }
 
-    public String printTranscript (String studentNumber) { // Edit to take String username as parameter , this will be used as the key to search
+    public String printTranscript (String studentNumber) {
+        // TODO: Edit to take String username as parameter , this will be used as the key to search
+        // TODO: maybe make this more readable
         String headerText  = ("\033[1m Student Transcript \033[0m");
         String outputHeaderText = printCentered(headerText, 98);
 
@@ -92,7 +93,8 @@ public class Transcript {
                 "Programme "+ getData(studentNumber, 10) +"                              Award                                              " + "\n" +
                 "Route     "+ getData(studentNumber, 11) +"                                            Class                                              ";
                 
-                
+
+            // FIXME: this shit fucked
              //   public String printTranscriptModules () { // Unkown error in this 
 
              //   return "+-----------------------------------------------------------------+------------------------------+" + "\n" +

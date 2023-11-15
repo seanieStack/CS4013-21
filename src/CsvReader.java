@@ -8,12 +8,12 @@ import java.util.List;
 import java.util.Map;
 
 public class CsvReader {
+    // TODO: e.printStackTrace() is generally not the best way to log error
 
-    private String csvFilePath ; 
-    private final List<String[]> csvData = new ArrayList<>();
-
-    // Constructor that reads the CSV data
     public List<String[]> CsvSearch (String csvFilePath) {
+        // FIXME: This reads in the header
+
+        final List<String[]> csvData = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(csvFilePath))) {
             String line;
             while ((line = br.readLine()) != null) {

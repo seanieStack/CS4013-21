@@ -23,11 +23,11 @@ public Login ( String username , String password) { //Default constructor
     this.password = password ;
 }
 
-public void setDivision(String division) { // Method to set Division
+public void setDivision(String division) {
     this.division = division;
 }
 
-public String getDivision() { //Method to get division
+public String getDivision() {
     return division;
 }
 
@@ -41,9 +41,11 @@ public String getUsername() {
 
 
 public boolean correctLogin(String searchUsername, String searchPassword, String searchDivision) {
+    // TODO: searchResult is never used
     List<String[]> searchResults = new ArrayList<>();
     boolean loggedIn = false ; 
-    for (String[] row : reader.CsvSearch("Data/LoginInfo.csv")) { // For reference this is how file paths should be formatted
+    for (String[] row : reader.CsvSearch("data/LoginInfo.csv")) {
+        // For reference this is how file paths should be formatted
         // Assuming the order is username, password, division
         String username = row[0];
         String password = row[1];
@@ -59,7 +61,7 @@ public boolean correctLogin(String searchUsername, String searchPassword, String
 }
 
 public boolean correctDivison(String searchUsername, String searchPassword, String searchDivision) {
-    for (String[] row : reader.CsvSearch("Data/LoginInfo.csv")) {
+    for (String[] row : reader.CsvSearch("data/LoginInfo.csv")) {
         // Assuming the order is username, password, division
         String username = row[0];
         String password = row[1];
@@ -75,8 +77,10 @@ public boolean correctDivison(String searchUsername, String searchPassword, Stri
 // Edit these methods later to avoid code duplication
 
 public boolean isStudent(String studentNumber, String searchDivision) {
+    // TODO: searchResult is never used
     List<String[]> searchResults = new ArrayList<>(); 
-    for (String[] row : reader.CsvSearch("Data/LoginInfo.csv")) { // For reference this is how filepaths should be formatted 
+    for (String[] row : reader.CsvSearch("Data/LoginInfo.csv")) {
+        // For reference this is how filepaths should be formatted
         // Assuming the order is username, password, division
         String username = row[0];
     

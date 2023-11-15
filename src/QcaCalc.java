@@ -6,12 +6,13 @@ public class QcaCalc {
 
     static {
         CsvReader reader = new CsvReader();
-        gradeQcaMap = reader.readGrade("Data/grades.csv");
+        gradeQcaMap = reader.readGrade("data/grades.csv");
         reader = null;
     }
 
 
-    public double getCummulativeQca ( String ... grades) { // I used to Varargs here instead of method overloading for more clean and readable code
+    public double getCummulativeQca ( String ... grades) {
+        //I used to Varargs here instead of method overloading for more clean and readable code
         int numModules = grades.length;
         double cummulativeQca = 0.00;
 
