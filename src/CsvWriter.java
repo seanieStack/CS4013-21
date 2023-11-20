@@ -4,35 +4,57 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.io.FileWriter;
+import java.util.Arrays;
+
 
 
 public class CsvWriter {
 
     // Constructor that reads the CSV data
-    public void modifySpecificRowInCsv(String csvFilePath, int rowToModify, String newData) {
-        List<String> fileContent = new ArrayList<>();
+    public void modifySpecificRowInCsv(String csvFilePath, String username, String strColumnIndex, String newData) {
+    List<String> fileContent = new ArrayList<>();
+    boolean rowFound = false;
+    int columnIndex =  Integer.valueOf(strColumnIndex);
 
-        try (BufferedReader br = new BufferedReader(new FileReader(csvFilePath))) {
-            String line;
-            int currentLine = 1;
-            while ((line = br.readLine()) != null) {
-                if (currentLine == rowToModify) {
-                    fileContent.add(newData);
+    try (BufferedReader br = new BufferedReader(new FileReader(csvFilePath))) {
+        String line;
+        while ((line = br.readLine()) != null) {
+            if (line.startsWith(username + ",")) {
+                String[] rowData = line.split(",");
+                if (columnIndex < rowData.length) {
+                    rowData[columnIndex] = newData; // Update the data at specified column
                 } else {
-                    fileContent.add(line);
+                    // Extend the row with empty columns up to the required index
+                    rowData = Arrays.copyOf(rowData, columnIndex + 1);
+                    rowData[columnIndex] = newData;
                 }
-                currentLine++;
+                line = String.join(",", rowData);
+                rowFound = true;
             }
-        } catch (IOException e) {
-            e.printStackTrace();
+            fileContent.add(line);
         }
 
-        try (FileWriter fw = new FileWriter(csvFilePath, false)) { // 'false' to overwrite
-            for (String line : fileContent) {
-                fw.append(line).append("\n");
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
+        if (!rowFound) {
+            // Create a new row with empty columns up to the required index
+            String[] newRowData = new String[columnIndex + 1];
+            Arrays.fill(newRowData, "");
+            newRowData[0] = username;
+            newRowData[columnIndex] = newData;
+            line = String.join(",", newRowData);
+            fileContent.add(line);
         }
+    } catch (IOException e) {
+        e.printStackTrace();
     }
+
+    // Write updated content back to file
+    try (FileWriter fw = new FileWriter(csvFilePath, false)) { // 'false' to overwrite
+        for (String fileLine : fileContent) {
+            fw.append(fileLine).append("\n");
+        }
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
+
 }
