@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.Scanner;
 public class CommandLineInterface {
     public void run() {
@@ -6,6 +7,9 @@ public class CommandLineInterface {
         QcaCalc qcaCalculator = new QcaCalc() ;
         Transcript transcript = new Transcript() ;
         Faculty faculty = new Faculty();
+
+        String username = "";
+        String password = "";
 
         boolean selectionPassed = false; //Fix: This was working , now can continue even without sucsessful login , Too tired to fix now
         while(!selectionPassed) {
@@ -28,28 +32,25 @@ public class CommandLineInterface {
             }
         }
 
-         System.out.println("Please enter your username (University Number) ");
-         String username = scanner.nextLine();
-         login.setUsername(username);
+         boolean loggedIn = false;
+         while(!loggedIn) {
 
-         System.out.println("Please enter your password ");
-         String password = scanner.nextLine();
+             System.out.println("Please enter your username (University Number) ");
+             username = scanner.nextLine();
+             login.setUsername(username);
 
-         if (login.correctLogin(username, password, login.getDivision())) {
-             System.out.println("You have successfully logged in ! ") ;
+             System.out.println("Please enter your password ");
+             password = scanner.nextLine();
 
-         } else if (username.length() != 8 || password.length() != 6 ) {
-             System.out.println("Please enter the correct length Username and password , Username is 8 characters and password is 6 characters");
+             if (login.correctLogin(username, password, login.getDivision())) {
+                 System.out.println("You have successfully logged in !");
+                 loggedIn = true;
+             } else if (username.length() != 8 || password.length() != 6) {
+                 System.out.println("Please enter the correct length Username and password , Username is 8 characters and password is 6 characters");
+             } else {
+                 System.out.println("Please enter the correct username and password !");
+             }
          }
-         else if (login.correctDivision(username, password, login.getDivision())) {
-             //FIXME This doesnt work, Something to do with booleans
-             //COMMENT , Might be easiest to just remove this altogther , not that important of a feature 
-             System.out.println( "This username and password belongs to the " + login.getDivision() + " division, not the division you have chosen");
-         }
-         else {
-             System.out.println("Please enter the correct username and password !");
-         }
-
         String division =  login.getDivision();
         if (division.equals("Student")) {
             System.out.println("Enter your command (C)alculate QCA (V)iew Transcript (R)equest action" );
