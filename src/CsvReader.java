@@ -11,7 +11,7 @@ public class CsvReader {
     // TODO: e.printStackTrace() is generally not the best way to log error
 
     public List<String[]> CsvSearch (String csvFilePath) {
-        // FIXME: This reads in the header
+        // FIXME: This reads in the header 
 
         final List<String[]> csvData = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(csvFilePath))) {

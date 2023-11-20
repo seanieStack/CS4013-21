@@ -28,15 +28,24 @@ public class Transcript {
 
     //Row ordering 3 = Gender, 4 = Firstname , 5 = Lastname , 6= Address 1 ,7 = Address 2 , 8 = Address 3 , 9 = Telephone ,10 = course , 11 = route 
 
-    public String getData(String studentNumber, int columnIndex) { //Change column index later to take String and not INT
-        for (String[] row : reader.CsvSearch("data/LoginInfo.csv")) {
+    public String getData(String studentNumber, int columnIndex) {
+        for (String[] row : reader.CsvSearch("CS4013-21/src/data/LoginInfo.csv")) {
             String username = row[0];
-    
             if (username.equals(studentNumber) && row.length > columnIndex) {
                 return row[columnIndex]; // Return the data from the specified column
             }
         }
-        return null; // or return an empty string if no match is found
+        return ""; // Return an empty string instead of null
+    }
+
+    public String getResultsData(String studentNumber, int columnIndex) { //TODO: Merge these 2 methods , Quick fix just to get the system built
+        for (String[] row : reader.CsvSearch("CS4013-21/src/data/StudentResults.csv")) {
+            String username = row[0];
+            if (username.equals(studentNumber) && row.length > columnIndex) {
+                return row[columnIndex]; // Return the data from the specified column
+            }
+        }
+        return ""; // Return an empty string instead of null
     }
 
     public String abbreviation(String studentNumber) {
@@ -56,17 +65,27 @@ public class Transcript {
         return action;
     }
 
-    public String formatRequest () {
-        String username = login.getUsername() ; 
-        String firstName = getData(username, 4);
-        String secondName = getData(username, 5);
-        return firstName + " " + secondName + " " + getRequest();
+    public String formatRequest() {      
+        return  "Student" + getRequest();
+    }
+    
+
+    public void recordRequest(String username) {
+        String request = formatRequest();
+        writer.modifySpecificRowInCsv("CS4013-21/src/data/StudentResults.csv", username,"1", request);
+    }
+    public void setRequestResult(boolean approved,String username) {
+        if (approved == true ) {
+            writer.modifySpecificRowInCsv("CS4013-21/src/data/StudentResults.csv", username,"2", "Approved");
+        } else {
+            writer.modifySpecificRowInCsv("CS4013-21/src/data/StudentResults.csv", username,"2" ,"Denied");
+        }
     }
 
-    public void recordRequest() {
-        String request = formatRequest();
-        writer.modifySpecificRowInCsv("Data/StudentResults.csv", 1, "request");
+    public void setRequestComments(String username , String comments ){
+        writer.modifySpecificRowInCsv("CS4013-21/src/data/StudentResults.csv", username,"3", comments);
     }
+    
 
     public String printTranscript (String studentNumber) {
         // TODO: Edit to take String username as parameter , this will be used as the key to search
@@ -89,10 +108,13 @@ public class Transcript {
                 "Status    "+ getData(studentNumber, 10) +"                              Batch   (random number)                            " + "\n" +
                 "Course    "+ getData(studentNumber, 10) +"                              Advisor                                           " + "\n" +
                 "Programme "+ getData(studentNumber, 10) +"                              Award                                              " + "\n" +
-                "Route     "+ getData(studentNumber, 11) +"                                            Class                                              ";
+                "Route     "+ getData(studentNumber, 11) +"                                            Class                                              " + "\n" +
+                "Request : " + getResultsData(studentNumber, 1) +"                                                                                 " + "\n" +
+                "Reuest Status : "+ getResultsData(studentNumber, 2)+"                                                                             "; 
                 
 
-            // FIXME: this shit fucked
+            // FIXME: this shit fucked 
+            // COMMENT: it is fucked , but we ever get far enough to include this we will probably need this code
              //   public String printTranscriptModules () { // Unknown error in this
 
              //   return "+-----------------------------------------------------------------+------------------------------+" + "\n" +
