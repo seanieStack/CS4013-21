@@ -8,7 +8,6 @@ public class Transcript {
 
     CsvReader reader = new CsvReader();
     CsvWriter writer = new CsvWriter();
-    Login login = new Login();
 
     public String printCentered(String text, int width) {
         int padSize = width - text.length();

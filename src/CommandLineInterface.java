@@ -25,7 +25,6 @@ public class CommandLineInterface {
 
     private void run() {
 
-
         setDivision();
         login();
 
@@ -36,27 +35,23 @@ public class CommandLineInterface {
             default -> System.out.println("Invalid Input !");
         }
 
-//        System.out.println("Please enter the student number to submit results" ); // Need to review the flowchart and specs
-//        String studentNumber = scanner.nextLine();
-//        if (!login.isStudent(studentNumber, "Student")) {
-//            System.out.println("Invalid Student number ! Please enter a correct one ") ;
-//
-//        }
-//      Something to do with department?
     }
 
     private void departmentLogic() {
+
         System.out.print("Use command (S) to (S)ubmit results");
         String commandSubmit = scanner.nextLine().toUpperCase();
+
         if (commandSubmit.equals("S")) {
+
             System.out.println("Enter Module code");
-            String moduleCode = scanner.nextLine().toUpperCase() ;
-            if (moduleCode.length() != 6) {
+            String moduleCode = scanner.nextLine().toUpperCase();
+
+            if (moduleCode.length() != 6)
                 System.out.println("Module code are 6 digits in length ! please reenter");
-            }
-            if (!faculty.searchModules(moduleCode)) { //TODO : Use ! instead
+            else if (!faculty.searchModules(moduleCode))
                 System.out.println("Module not found");
-            }
+
             System.out.println("Enter student Number");
             String selectedStudentNumber = scanner.nextLine();
             if (!login.isStudent(selectedStudentNumber, "Student")|| selectedStudentNumber.length() != 8) {
@@ -79,8 +74,16 @@ public class CommandLineInterface {
 
         }
 
-        // if so
-        //err.message = "This is not a module offered by UL , try again"
+//      if so
+//      err.message = "This is not a module offered by UL , try again"
+//
+//      System.out.println("Please enter the student number to submit results" ); // Need to review the flowchart and specs
+//      String studentNumber = scanner.nextLine();
+//      if (!login.isStudent(studentNumber, "Student")) {
+//          System.out.println("Invalid Student number ! Please enter a correct one ") ;
+//
+//       }
+//      Something to do with department? Was left at bottom of run
     }
 
     private void facultyLogic() {
@@ -115,7 +118,7 @@ public class CommandLineInterface {
                         System.out.println("Please enter the student number of the student you wish to review");
                         String selectedStudentNumber = scanner.nextLine() ;
                         login.setUsername(selectedStudentNumber);;
-                        if (transcript.getResultsData(selectedStudentNumber, 1 )!= null); {
+                        if (transcript.getResultsData(selectedStudentNumber, 1 )!= null) {
                             System.out.println(transcript.getResultsData(selectedStudentNumber, 1));
                             System.out.println("--------------------------------------------------------------------");
                             System.out.println("Enter Y to approve , Enter N to deny ");

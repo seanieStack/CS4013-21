@@ -34,7 +34,6 @@ public class QcaCalc {
         // Needs some logic for if credits awarded or not ...
     }
 
-
     public double getCummulativeQca ( String ... grades) {
         //I used to Varargs here instead of method overloading for more clean and readable code
         int numModules = grades.length;
