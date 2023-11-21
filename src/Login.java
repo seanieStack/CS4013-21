@@ -44,7 +44,7 @@ public boolean correctLogin(String searchUsername, String searchPassword, String
     // TODO: searchResult is never used
     List<String[]> searchResults = new ArrayList<>();
     boolean loggedIn = false ; 
-    for (String[] row : reader.CsvSearch("./src/data/LoginInfo.csv")) {
+    for (String[] row : reader.CsvSearch("CS4013-21/src/data/LoginInfo.csv")) {
         // For reference this is how file paths should be formatted
         // Assuming the order is username, password, division
         String username = row[0];
@@ -61,7 +61,7 @@ public boolean correctLogin(String searchUsername, String searchPassword, String
 }
 
 public boolean correctDivision(String searchUsername, String searchPassword, String searchDivision) {
-    for (String[] row : reader.CsvSearch("./src/data/LoginInfo.csv")) {
+    for (String[] row : reader.CsvSearch("CS4013-21/src/data/LoginInfo.csv")) {
         // Assuming the order is username, password, division
         String username = row[0];
         String password = row[1];
@@ -79,7 +79,7 @@ public boolean correctDivision(String searchUsername, String searchPassword, Str
 public boolean isStudent(String studentNumber, String searchDivision) {
     // TODO: searchResult is never used
     List<String[]> searchResults = new ArrayList<>(); 
-    for (String[] row : reader.CsvSearch("./src/data/LoginInfo.csv")) {
+    for (String[] row : reader.CsvSearch("CS4013-21/src/data/LoginInfo.csv")) {
         // For reference this is how file paths should be formatted
         // Assuming the order is username, password, division
         String username = row[0];

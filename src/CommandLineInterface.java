@@ -59,13 +59,23 @@ public class CommandLineInterface {
             }
             System.out.println("Enter student Number");
             String selectedStudentNumber = scanner.nextLine();
-            if (!login.isStudent(selectedStudentNumber, "Student")|| selectedStudentNumber.length() != 6) {
+            if (!login.isStudent(selectedStudentNumber, "Student")|| selectedStudentNumber.length() != 8) {
                 System.out.println("Invalid Student number ! Please enter a correct one ") ;
+            } else if (faculty.resultsExists(selectedStudentNumber, moduleCode)){
+                System.out.println("Results for  student ( " + selectedStudentNumber +" ) already exist for module ( "+ moduleCode + " )");
             }
+
+            //TODO: Prevent users from proceeding with invalid input -> Send back to Enter Module code 
             System.out.println("Enter Grade e.g A1");
-            String grade = scanner.nextLine();
-            // Verify is valid
-            // Update CSV
+            String grade = scanner.nextLine().toUpperCase();
+            if(!faculty.validGrade(grade)) {
+                System.out.println("This is not a valid grade , Please see UL handbook of academic regulations for valid grades ");
+            }
+            System.out.println("Please enter the AY year in which this grade was taken");
+            String ay = scanner.nextLine().toUpperCase();
+            //Validate input 
+
+            faculty.submitResults(selectedStudentNumber, moduleCode, ay, grade);
 
         }
 

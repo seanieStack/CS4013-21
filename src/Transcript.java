@@ -30,7 +30,7 @@ public class Transcript {
     //Row ordering 3 = Gender, 4 = Firstname , 5 = Lastname , 6= Address 1 ,7 = Address 2 , 8 = Address 3 , 9 = Telephone ,10 = course , 11 = route 
 
     public String getData(String studentNumber, int columnIndex) {
-        for (String[] row : reader.CsvSearch("./src/data/LoginInfo.csv")) {
+        for (String[] row : reader.CsvSearch("CS4013-21/src/data/LoginInfo.csv")) {
             String username = row[0];
             if (username.equals(studentNumber) && row.length > columnIndex) {
                 return row[columnIndex]; // Return the data from the specified column
@@ -40,7 +40,7 @@ public class Transcript {
     }
 
     public String getResultsData(String studentNumber, int columnIndex) { //TODO: Merge these 2 methods , Quick fix just to get the system built
-        for (String[] row : reader.CsvSearch("./src/data/StudentResults.csv")) {
+        for (String[] row : reader.CsvSearch("CS4013-21/src/data/StudentResults.csv")) {
             String username = row[0];
             if (username.equals(studentNumber) && row.length > columnIndex) {
                 return row[columnIndex]; // Return the data from the specified column
@@ -68,18 +68,18 @@ public class Transcript {
 
     public void recordRequest(String username) {
         String request = formatRequest();
-        writer.modifySpecificRowInCsv("./src/data/StudentResults.csv", username,"1", request);
+        writer.modifySpecificRowInCsv("CS4013-21/src/data/StudentResults.csv", username,"1", request);
     }
     public void setRequestResult(boolean approved,String username) {
         if (approved) {
-            writer.modifySpecificRowInCsv("./src/data/StudentResults.csv", username,"2", "Approved");
+            writer.modifySpecificRowInCsv("CS4013-21/src/data/StudentResults.csv", username,"2", "Approved");
         } else {
-            writer.modifySpecificRowInCsv("./src/data/StudentResults.csv", username,"2" ,"Denied");
+            writer.modifySpecificRowInCsv("CS4013-21/src/data/StudentResults.csv", username,"2" ,"Denied");
         }
     }
 
     public void setRequestComments(String username , String comments ){
-        writer.modifySpecificRowInCsv("./src/data/StudentResults.csv", username,"3", comments);
+        writer.modifySpecificRowInCsv("CS4013-21/src/data/StudentResults.csv", username,"3", comments);
     }
     
 

@@ -57,4 +57,40 @@ public class CsvWriter {
     }
 }
 
+public void appendOrUpdateRow(String csvFilePath, String username, String newData) {
+    List<String> fileContent = new ArrayList<>();
+    boolean rowUpdated = false;
+
+    try (BufferedReader br = new BufferedReader(new FileReader(csvFilePath))) {
+        String line;
+        while ((line = br.readLine()) != null) {
+            if (line.startsWith(username + ",")) {
+                // Update the existing row
+                fileContent.add(newData);
+                rowUpdated = true;
+            } else {
+                fileContent.add(line);
+            }
+        }
+
+        if (!rowUpdated) {
+            // Append the new row
+            fileContent.add(newData);
+        }
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+
+    // Write updated content back to file
+    try (FileWriter fw = new FileWriter(csvFilePath, false)) { // 'false' to overwrite
+        for (String fileLine : fileContent) {
+            fw.append(fileLine).append("\n");
+        }
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+
+
+
+}
 }
