@@ -17,10 +17,7 @@ public class Student extends Person{
         switch (commandStudent) {
             case "C" -> {
 
-                //TODO: Make this so we store grades for students instead of asking for their grades
-                //COMMENT: We do not need to store these grades, Students can not updated there grades.... Just like in real life
-
-                System.out.println("Please enter this semesters grades in the format ,A1 ,A2,B1");
+                System.out.println("Please enter this semesters grades in the format A1,A2,B1");
                 String gradesInput = scanner.nextLine();
                 String[] grades = gradesInput.split(",\\s*"); //FIXME: Needs work
                 System.out.println("Cummulative QCA is " + String.format("%.2f", QcaCalc.getCummulativeQca(grades)) + " for the " + grades.length + " modules you have taken");
