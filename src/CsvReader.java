@@ -8,8 +8,6 @@ import java.util.List;
 import java.util.Map;
 
 public class CsvReader {
-    // TODO: e.printStackTrace() is generally not the best way to log error
-
     public List<String[]> CsvSearch (String csvFilePath) {
         // FIXME: This reads in the header 
 

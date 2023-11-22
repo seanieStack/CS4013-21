@@ -14,7 +14,7 @@ public class CsvWriter {
     public void modifySpecificRowInCsv(String csvFilePath, String username, String strColumnIndex, String newData) {
     List<String> fileContent = new ArrayList<>();
     boolean rowFound = false;
-    int columnIndex =  Integer.valueOf(strColumnIndex);
+    int columnIndex =  Integer.parseInt(strColumnIndex);
 
     try (BufferedReader br = new BufferedReader(new FileReader(csvFilePath))) {
         String line;
