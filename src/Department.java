@@ -1,10 +1,10 @@
 import java.util.Scanner;
 
-public class Deparment extends Person{
+public class Department extends Person{
     Scanner scanner;
     Transcript transcript;
     Login login;
-    public Deparment(String username, String password){
+    public Department(String username, String password){
         super(username, password);
         scanner = new Scanner(System.in);
         transcript = new Transcript();

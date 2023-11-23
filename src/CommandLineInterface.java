@@ -1,16 +1,6 @@
-import java.util.Scanner;
 public class CommandLineInterface {
-
-    Scanner scanner;
     Login login;
-
-    public void setup(){
-        scanner = new Scanner(System.in);
-
-        run();
-    }
-
-    private void run() {
+    public void run() {
 
         login = new Login();
 
@@ -24,8 +14,8 @@ public class CommandLineInterface {
                 faculty.facultyLogic();
             }
             case "Department" -> {
-                Deparment deparment = new Deparment(login.getUsername(), login.getPassword());
-                deparment.departmentLogic();
+                Department department = new Department(login.getUsername(), login.getPassword());
+                department.departmentLogic();
             }
             default -> System.out.println("Invalid Input !");
         }
@@ -33,7 +23,3 @@ public class CommandLineInterface {
     }
 
 }
-
-
-
-

@@ -1,4 +1,3 @@
-import java.util.List;
 import java.util.Scanner;
 
 public class Faculty extends Person {
@@ -54,8 +53,8 @@ public class Faculty extends Person {
                             else if (commandApprove.equals("N")) {
                                 transcript.setRequestResult(true, selectedStudentNumber); //TODO: Change to false , N = Deny , test and review for push
                                 System.out.println("Your decision has being recorded and is now reflected on the students transcript , add your justification for this decision below");
-                                String aprroveComments = scanner.nextLine();
-                                transcript.setRequestComments(selectedStudentNumber, aprroveComments);
+                                String approveComments = scanner.nextLine();
+                                transcript.setRequestComments(selectedStudentNumber, approveComments);
                             } else {
                                 System.out.println("Invalid input");
                             }
