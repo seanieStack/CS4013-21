@@ -73,19 +73,6 @@ public class Login  {
         }
         return false;
     }
-
-    public boolean correctDivision(String searchUsername, String searchPassword, String searchDivision) {
-        for (String[] row : reader.CsvSearch("./src/data/LoginInfo.csv")) {
-            String username = row[0];
-            String password = row[1];
-            String division = row[2];
-
-            if (username.equals(searchUsername) && password.equals(searchPassword) && !division.equals(searchDivision)) {
-                return true;
-            }
-        }
-        return false;
-    }
     // Edit these methods later to avoid code duplication
 
     public boolean isStudent(String studentNumber, String searchDivision) {

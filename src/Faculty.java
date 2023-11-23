@@ -76,13 +76,10 @@ public class Faculty extends Person {
                             } else {
                                 System.out.println("Invalid input");
                             }
-                            String aprroveComments = scanner.nextLine();
                         }
 
                     }
-                    case "B" -> {
-                        backToFacultyMenu = true; // Set flag to true to go back to the previous menu,
-                    }
+                    case "B" -> backToFacultyMenu = true; // Set flag to true to go back to the previous menu,
                     default -> System.out.println("Invalid Input! Please select a valid option");
                 }
             }

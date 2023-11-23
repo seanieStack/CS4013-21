@@ -9,7 +9,6 @@ import java.util.Map;
 
 public class CsvReader {
     public List<String[]> CsvSearch (String csvFilePath) {
-        // FIXME: This reads in the header 
 
         final List<String[]> csvData = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(csvFilePath))) {

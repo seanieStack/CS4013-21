@@ -21,13 +21,11 @@ public class CsvWriter {
         while ((line = br.readLine()) != null) {
             if (line.startsWith(username + ",")) {
                 String[] rowData = line.split(",");
-                if (columnIndex < rowData.length) {
-                    rowData[columnIndex] = newData; // Update the data at specified column
-                } else {
+                if (columnIndex >= rowData.length) {
                     // Extend the row with empty columns up to the required index
                     rowData = Arrays.copyOf(rowData, columnIndex + 1);
-                    rowData[columnIndex] = newData;
                 }
+                rowData[columnIndex] = newData; // Update the data at specified column
                 line = String.join(",", rowData);
                 rowFound = true;
             }

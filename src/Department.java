@@ -1,3 +1,4 @@
+import java.util.Calendar;
 import java.util.Scanner;
 
 public class Department extends Person{
@@ -34,15 +35,27 @@ public class Department extends Person{
                 System.out.println("Results for  student ( " + selectedStudentNumber +" ) already exist for module ( "+ moduleCode + " )");
             }
 
-            //TODO: Prevent users from proceeding with invalid input -> Send back to Enter Module code
-            System.out.println("Enter Grade e.g A1");
-            String grade = scanner.nextLine().toUpperCase();
-            if(!Modules.validGrade(grade)) {
-                System.out.println("This is not a valid grade , Please see UL handbook of academic regulations for valid grades ");
+            boolean correctGrade = false;
+            String grade = "";
+            while(!correctGrade) {
+                System.out.println("Enter Grade e.g A1");
+                grade = scanner.nextLine().toUpperCase();
+                if (Modules.validGrade(grade)) {
+                    correctGrade = true;
+                }
+                else {
+                    System.out.println("This is not a valid grade , Please see UL handbook of academic regulations for valid grades ");
+                }
             }
-            System.out.println("Please enter the AY year in which this grade was taken");
-            String ay = scanner.nextLine().toUpperCase();
-            //Validate input
+            boolean correctYear = false;
+            String ay = "";
+            while(!correctYear) {
+                System.out.println("Please enter the AY year in which this grade was taken");
+                ay = scanner.nextLine().toUpperCase();
+                if(Integer.parseInt(ay) >= 1970 && Integer.parseInt(ay) <= Calendar.getInstance().get(Calendar.YEAR)){
+                    correctYear = true;
+                }
+            }
 
             Modules.submitResults(selectedStudentNumber, moduleCode, ay, grade);
 

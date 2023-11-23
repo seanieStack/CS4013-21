@@ -27,7 +27,7 @@ public class Student extends Person{
 
             case "R" -> {
                 System.out.println("Enter your command, (R)equest repeat , (L)ink in module , (Y)ear repeat , (S)emester repeat");
-                String commandRequest = scanner.nextLine();
+                String commandRequest = scanner.nextLine().toUpperCase();
                 switch (commandRequest) {
                     case "R" -> {
                         System.out.println("Enter Module code for your requested module");
