@@ -47,16 +47,5 @@ public class Department extends Person{
             Modules.submitResults(selectedStudentNumber, moduleCode, ay, grade);
 
         }
-
-//      if so
-//      err.message = "This is not a module offered by UL , try again"
-//
-//      System.out.println("Please enter the student number to submit results" ); // Need to review the flowchart and specs
-//      String studentNumber = scanner.nextLine();
-//      if (!login.isStudent(studentNumber, "Student")) {
-//          System.out.println("Invalid Student number ! Please enter a correct one ") ;
-//
-//       }
-//      Something to do with department? Was left at bottom of run
     }
 }

@@ -2,12 +2,9 @@ import java.util.Map;
 import java.util.HashMap;
 
 public class QcaCalc {
-    static Map<String, Double> gradeQcaMap;
 
-    static {
-        CsvReader reader = new CsvReader();
-        gradeQcaMap = reader.readGrade("./src/data/grades.csv");
-     }
+    static CsvReader reader = new CsvReader();
+    static Map<String, Double> gradeQcaMap = reader.readGrade("./src/data/grades.csv");
 
     public static double getCummulativeQca ( String ... grades) {
         //I used to Varargs here instead of method overloading for more clean and readable code

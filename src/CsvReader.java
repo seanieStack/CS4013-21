@@ -24,16 +24,24 @@ public class CsvReader {
         return csvData ; 
     }
 
-    public Map<String, Double> readGrade(String fileName){
+    public Map<String, Double> readGrade(String fileName) {
         Map<String, Double> grades = new HashMap<>();
-        try(BufferedReader br = new BufferedReader(new FileReader(fileName))){
+        boolean firstLine = true;
+
+        try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
             String line;
-            while((line = br.readLine()) != null){
-                grades.put(line.split(",")[0], Double.valueOf(line.split(",")[1]));
+            while ((line = br.readLine()) != null) {
+                if (firstLine) {
+                    firstLine = false;
+                    continue;
+                }
+                String[] parts = line.split(",");
+                grades.put(parts[0], Double.valueOf(parts[1]));
             }
-        } catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
+
         return grades;
     }
 }

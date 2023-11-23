@@ -1,13 +1,15 @@
-import java.util.Scanner;
+import java.util.*;
 
 public class Faculty extends Person {
     Scanner scanner;
     Transcript transcript;
+    CsvReader reader;
 
     public Faculty(String username, String password) {
         super(username, password);
         scanner = new Scanner(System.in);
         transcript = new Transcript();
+        reader = new CsvReader();
     }
 
     public void facultyLogic(){
@@ -32,6 +34,22 @@ public class Faculty extends Person {
                         System.out.println("Identifying at-risk students...");
                         // Scan cummulative QCA from grades csv and print student number , users can view transcript from there
                         // Also print all Students with a QCA < 2 in Semester 1
+
+                        List<String[]> csvData = reader.CsvSearch("./src/data/StudentGrades.csv");
+                        Map<Integer, List<String>> studentGrades = new HashMap<>();
+                        for (int i = 1; i < csvData.size(); i++) {
+                            if(csvData.get(i).length == 5) {
+                                int studentNumber = Integer.parseInt(csvData.get(i)[0]);
+                                String studentGrade = csvData.get(i)[4];
+                                studentGrades.computeIfAbsent(studentNumber, k -> new ArrayList<>()).add(studentGrade);
+                            }
+                        }
+                        for(Map.Entry<Integer, List<String>> entry : studentGrades.entrySet()){
+                            String[] grades = entry.getValue().toArray(new String[0]);
+                            if(QcaCalc.getCummulativeQca(grades) <= 2.0){
+                                System.out.println(entry.getKey() + ":" + QcaCalc.getCummulativeQca(grades));
+                            }
+                        }
                     }
                     case "R" -> {
                         // Handle Review Student Progression
