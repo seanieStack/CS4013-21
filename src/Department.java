@@ -47,18 +47,18 @@ public class Department extends Person{
                     System.out.println("This is not a valid grade , Please see UL handbook of academic regulations for valid grades ");
                 }
             }
-            boolean correctYear = false;
-            String ay = "";
-            while(!correctYear) {
-                System.out.println("Please enter the AY year in which this grade was taken");
-                ay = scanner.nextLine().toUpperCase();
-                if(Integer.parseInt(ay) >= 1970 && Integer.parseInt(ay) <= Calendar.getInstance().get(Calendar.YEAR)){
-                    correctYear = true;
-                }
+            boolean correctYear = false ;
+            String ay = "       ";
+            while (!correctYear) {
+            System.out.println("Please enter the AY year in which this grade was taken");
+             ay = scanner.nextLine().toUpperCase();
+            if(ay.length() == 9 && ay.charAt(4) == '/')  { //Comment: Not fully correct but covers most cases 
+                correctYear = true;
             }
-
-            Modules.submitResults(selectedStudentNumber, moduleCode, ay, grade);
-
+            String semester = Modules.getModuleSemester(moduleCode);
+            Modules.submitResults(selectedStudentNumber, moduleCode, semester, ay, grade);
+            System.out.println("Grade for" + moduleCode + "is now reflected on the transcript of student" + username  );
+        }
         }
     }
 }
