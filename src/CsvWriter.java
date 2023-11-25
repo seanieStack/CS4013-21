@@ -55,40 +55,37 @@ public class CsvWriter {
     }
 }
 
-public void appendOrUpdateRow(String csvFilePath, String username, String newData) {
+public void appendOrUpdateRow(String csvFilePath, String username, String moduleCode, String semester, String newData) {
     List<String> fileContent = new ArrayList<>();
-    boolean rowUpdated = false;
+    boolean rowFound = false;
 
     try (BufferedReader br = new BufferedReader(new FileReader(csvFilePath))) {
         String line;
         while ((line = br.readLine()) != null) {
-            if (line.startsWith(username + ",")) {
-                // Update the existing row
+            String[] parts = line.split(",");
+
+            if (parts.length > 2 && parts[0].equals(username) && parts[1].equals(moduleCode) && parts[2].equals(semester)) {
+                // Update the existing row if username, moduleCode, and semester match
                 fileContent.add(newData);
-                rowUpdated = true;
+                rowFound = true;
             } else {
+                // Add the line as is if it's not the one we want to update
                 fileContent.add(line);
             }
         }
 
-        if (!rowUpdated) {
-            // Append the new row
+        if (!rowFound) {
+            // Append the new row if no matching row was found
             fileContent.add(newData);
         }
     } catch (IOException e) {
         e.printStackTrace();
     }
 
-    // Write updated content back to file
+    // Write updated content back to the file
     try (FileWriter fw = new FileWriter(csvFilePath, false)) { // 'false' to overwrite
         for (String fileLine : fileContent) {
             fw.append(fileLine).append("\n");
         }
     } catch (IOException e) {
         e.printStackTrace();
-    }
-
-
-
-}
-}
