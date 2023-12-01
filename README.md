@@ -12,7 +12,7 @@ Name: Adam Herron (SN)
 Name: Jason Cushen (SN)
 
 ### Prerequisites
-Users must have Java 17 installed on their computer. If you do not have Java installed you can download here Link [(https://www.oracle.com/java/technologies/downloads/)] 
+Users must have Java 17 installed on their computer. If you do not have Java installed you can download here [Link] (https://www.oracle.com/java/technologies/downloads/) 
 Users must have a Java compatible intergrated devlopment enviroment installed on their machine e.g Visual Studio Code, IntelliJ , Netbeans , BlueJ
 
 ### Cloning the Repository
