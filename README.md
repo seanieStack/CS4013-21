@@ -6,10 +6,10 @@
 The project offers three user roles: "Faculty," "Department," and "Student," accessible through a user-friendly interface and a Command Line Interface (CLI). Users can seamlessly request actions like reviewing student progression, submitting results, or requesting exam retakes, with all changes being instantly reflected in the student's transcript. This ensures real-time updates and maintains accurate academic records
 
 # Contriubters
-Name: Mark Callan (22363246)
-Name: Seanie Stack (SN)
-Name: Adam Herron (SN)
-Name: Jason Cushen (SN)
+**Name:** Mark Callan (22363246)  
+**Name:** Seanie Stack (SN)  
+**Name:** Adam Herron (SN)  
+**Name:** Jason Cushen (SN)  
 
 ### Prerequisites
 Users must have Java 17 installed on their computer. If you do not have Java installed you can download 
