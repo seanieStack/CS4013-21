@@ -1,2 +1,23 @@
-# CS4013-21 , To be filled in later 
-# I cant push changes to thre repository , Dont' know if its a problem with permissons or what ,Will work on pushing changes in the morning 
+# Project Title
+
+Student Records Systems UL for group 21 of module CS4013
+
+# Contriubters
+Name: Mark Callan (22363246)
+Name: Seanie Stack (SN)
+Name: Adam Herron (SN)
+Name: Jason Cushen (SN)
+
+### Prerequisites
+Users must have Java 17 installed on their computer. If you do not have Java installed you can download here ( ) 
+Users must have a Java compatible intergrated devlopment enviroment installed on their machine e.g Visual Studio Code, IntelliJ , Netbeans , BlueJ
+
+### Cloning the Repository
+To clone the repository, run the following command in your terminal:
+```bash
+git clone https://github.com/seanieStack/CS4013-21.git
+
+## Installation and Running the Project
+To complile the project run the following command in your terminal :
+```bash
+java.c app.java 
