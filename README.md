@@ -27,3 +27,17 @@ To complile the project run the following command in your terminal :
 ```bash
 java.c app.java
  ```
+
+## Logging in to the sytem
+This system has 3 seperate logins , Student , Faculty and Department to cater for different types of users.
+A full list of users can be in src/data/LoginInfo.csv
+
+### Student Login 
+> Username : 22222222
+> Password : CS0000
+### Faculty Login  
+> Username : 22222222
+> Password : CS0000
+### Department Login
+> Username : 22222222
+> Password : CS0000
