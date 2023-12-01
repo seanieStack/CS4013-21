@@ -1,9 +1,9 @@
 # Project Title
 
-Student Records Systems UL for group 21 of module CS4013
+**Student Records Systems UL for group 21 of module CS4013**
 
 # Project Description
-lorem impsum text
+Paragraph on the functioality 
 
 # Contriubters
 Name: Mark Callan (22363246)
@@ -29,15 +29,15 @@ java.c app.java
  ```
 
 ## Logging in to the sytem
-This system has 3 seperate logins , Student , Faculty and Department to cater for different types of users.
-A full list of users can be in src/data/LoginInfo.csv
+This system has 3 seperate logins , Student , Faculty and Department to cater for different types of users.  
+A full list of users can be in `src/data/LoginInfo.csv
 
 ### Student Login 
-> Username : 22222222
+> Username : 22363246
+> Password : CS1234
+### Department Login
+> Username : 22333333
 > Password : CS0000
 ### Faculty Login  
-> Username : 22222222
-> Password : CS0000
-### Department Login
 > Username : 22222222
 > Password : CS0000
