@@ -1,6 +1,6 @@
 import java.util.Map;
 
-    /** A class which provides methods for claculating QCA based on grades. 
+    /** A class which provides methods for calculating QCA based on grades.
     * It maps grades to the corresponding QCA.
     * Class gets its information from CSV file
     */
@@ -16,7 +16,6 @@ public class QcaCalc {
     *@param grades -array of the grades to be calculated
     *@return The QCA
      */
-    
     public static double getCummulativeQca ( String ... grades) {
         //We used to Varargs here instead of method overloading for more clean and readable code
         int numModules = grades.length;

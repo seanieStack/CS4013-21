@@ -90,7 +90,7 @@ public class Faculty extends Person {
                         }
 
                     }
-                    case "B" -> backToFacultyMenu = true; // Set flag to true to go back to the previous menu,TODO:
+                    case "B" -> backToFacultyMenu = true;
                     default -> System.out.println("Invalid Input! Please select a valid option");
                 }
             }

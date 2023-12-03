@@ -1,6 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="JavadocGenerationManager">
-    <option name="OUTPUT_DIRECTORY" value="$PROJECT_DIR$/src/main/Javadocs" />
+    <option name="OUTPUT_DIRECTORY" value="$PROJECT_DIR$/src/JavaDocs" />
   </component>
   <component name="PWA">
     <option name="enabled" value="true" />

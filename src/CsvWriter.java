@@ -74,37 +74,40 @@ public class CsvWriter {
      * @param newData     The new data to put in the provided row.
      */
     
-public void appendOrUpdateRow(String csvFilePath, String username, String moduleCode, String semester, String newData) {
-    List<String> fileContent = new ArrayList<>();
-    boolean rowFound = false;
+    public void appendOrUpdateRow(String csvFilePath, String username, String moduleCode, String semester, String newData) {
+        List<String> fileContent = new ArrayList<>();
+        boolean rowFound = false;
 
-    try (BufferedReader br = new BufferedReader(new FileReader(csvFilePath))) {
-        String line;
-        while ((line = br.readLine()) != null) {
-            String[] parts = line.split(",");
+        try (BufferedReader br = new BufferedReader(new FileReader(csvFilePath))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] parts = line.split(",");
 
-            if (parts.length > 2 && parts[0].equals(username) && parts[1].equals(moduleCode) && parts[2].equals(semester)) {
-                // Update the existing row if username, moduleCode, and semester match
-                fileContent.add(newData);
-                rowFound = true;
-            } else {
-                // Add the line as is if it's not the one we want to update
-                fileContent.add(line);
+                if (parts.length > 2 && parts[0].equals(username) && parts[1].equals(moduleCode) && parts[2].equals(semester)) {
+                    // Update the existing row if username, moduleCode, and semester match
+                    fileContent.add(newData);
+                    rowFound = true;
+                } else {
+                    // Add the line as is if it's not the one we want to update
+                    fileContent.add(line);
+                }
             }
+
+            if (!rowFound) {
+                // Append the new row if no matching row was found
+                fileContent.add(newData);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
-        if (!rowFound) {
-            // Append the new row if no matching row was found
-            fileContent.add(newData);
+        // Write updated content back to the file
+        try (FileWriter fw = new FileWriter(csvFilePath, false)) { // 'false' to overwrite
+            for (String fileLine : fileContent) {
+                fw.append(fileLine).append("\n");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-    } catch (IOException e) {
-        e.printStackTrace();
     }
-
-    // Write updated content back to the file
-    try (FileWriter fw = new FileWriter(csvFilePath, false)) { // 'false' to overwrite
-        for (String fileLine : fileContent) {
-            fw.append(fileLine).append("\n");
-        }
-    } catch (IOException e) {
-        e.printStackTrace();
+}

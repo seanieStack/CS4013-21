@@ -46,7 +46,7 @@ public class Student extends Person{
                 switch (commandRequest) {
                     case "R" -> {
                         System.out.println("Enter Module code for your requested module");
-                        String commandModule = scanner.nextLine().toUpperCase(); //TODO: validate choice - 6 Digit length
+                        String commandModule = scanner.nextLine().toUpperCase();
 
                         System.out.println("Your repeat request has being registered and is reflected on your transcript ");
                         transcript.setRequest(" has requested to repeat module: " + commandModule);
@@ -88,8 +88,5 @@ public class Student extends Person{
                 }
             }
         }
-
-        
-        // COMMENT: We will need Grades.CSV to be fully integrated first , Adding a credits (received or not) field to QcaCalc class
     }
 }

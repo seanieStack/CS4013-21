@@ -1,0 +1,27 @@
+Username,Password,Division,Gender,Firstname,Lastname,Address1,address2,Address3,Telephone,Course,Route
+22363246,CS1234,Student,Male,Mark,Callan,Corcuillogue,Carrickmacross,Monaghan,0874405440,Computer Systems,CS
+22785634,CS5678,Student,Female,Moya,Hogan,Kilmurry,Castletroy,Limerick,0863579843,Accounting, Business
+22123456,CS9012,Student,Male, Enda, Cahill ,Blackrock,Dundalk,Louth, 087330873, PE teaching, Teaching
+22876543,CS3456,Student,Female, Kate,Scully,a,b,Wiclow,087431986,AI and Machine learning, CS
+22987654,CS7890,Student,Male,Sean,Murphy,a,b,Dublin,087625190,Construction Managment,Construction
+22374302,CS4013,Student,Male,Seanie,Stack,Woodford,Listowel,Kerry,0874538221,Computer Systems,CS
+22222222,CS0000,Department
+22223456,CS8765,Department
+22334567,CS2109,Department
+22445678,CS6543,Department
+22556789,CS0987,Department
+22456789,CS1000,Department
+22467890,CS1100,Department
+22478901,CS1200,Department
+22489012,CS1300,Department
+22490123,CS1400,Department
+22333333,CS0000,Faculty
+22778901,CS4329,Faculty
+22889012,CS5438,Faculty
+22990123,CS6547,Faculty
+22123487,CS7656,Faculty
+22134567,CS0001,Faculty
+22145678,CS0002,Faculty
+22156789,CS0003,Faculty
+22167890,CS0004,Faculty
+22178901,CS0005,Faculty
