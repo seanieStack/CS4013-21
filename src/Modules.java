@@ -1,8 +1,19 @@
 import java.util.List;
 
+/**
+ * This is a set of utility methods related to modules and student results.
+ */
+
 public class Modules {
     static CsvReader reader = new CsvReader();
     static CsvWriter writer = new CsvWriter();
+
+      /**
+     * Searches for a module with the provided module code.
+     *
+     * @param moduleCode The module code to search for.
+     * @return True if the module is found, false otherwise.
+     */
 
     public static boolean searchModules(String moduleCode) {
         List<String[]> csvData = reader.CsvSearch("./src/data/Modules.csv");
@@ -15,9 +26,17 @@ public class Modules {
             }
         }
 
-        return false; // Module not found
+        return false; // If module not found
     }
 
+    /**
+     * Checks if results exist for the provided student number and module code.
+     *
+     * @param studentNumber The student number.
+     * @param moduleCode    The module code.
+     * @return True if results exist, false otherwise.
+     */
+    
     public static boolean resultsExists(String studentNumber, String moduleCode) {
         List<String[]> csvData = reader.CsvSearch("./src/data/StudentResults.csv");
 
@@ -30,10 +49,24 @@ public class Modules {
         return false; // No matching row found
     }
 
+    /**
+     * Checks if the provided grade is valid.
+     *
+     * @param grade The grade to validate.
+     * @return True if the grade is valid, false otherwise.
+     */
+    
     public static boolean validGrade(String grade) {
         return QcaCalc.gradeQcaMap.containsKey(grade);
     }
 
+        /**
+     * Retrieves the semester info for a provided module code from the Modules CSV.
+     *
+     * @param moduleCode The module code to search for.
+     * @return The semester of the module if it is found, or "Not Found" if the module is not found.
+     */ 
+    
       public static String getModuleSemester(String moduleCode) {
         List<String[]> csvData = reader.CsvSearch("CS4013-21/src/data/Modules.csv");
     
@@ -45,10 +78,17 @@ public class Modules {
             }
         }
     
-        return "Not Found"; // Module not found
+        return "Not Found"; // If module not found
     }
 
-
+    /**
+     * Submits student results to the CSV.
+     *
+     * @param username   The student username.
+     * @param moduleCode The module code.
+     * @param ay         The academic year.
+     * @param grade      The student's grade.
+     */
 
     public static void submitResults(String username, String moduleCode, String semester, String ay, String grade) {
         String newData = String.join(",", username, moduleCode, semester, ay, grade); 
