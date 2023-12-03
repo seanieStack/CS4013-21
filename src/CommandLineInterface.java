@@ -15,12 +15,12 @@ public class CommandLineInterface {
         login = new Login();
         //Determines division
         switch (login.getDivision()) {
-            case "Student" -> 
+            case "Student" -> {
                 //Creates Student object and puts the login details into it
                 Student student = new Student(login.getUsername(), login.getPassword());
                 student.studentLogic();
             }
-            case "Faculty" -> 
+            case "Faculty" -> {
                 //Creates Faculty object and puts the login details into it
                 Faculty faculty = new Faculty(login.getUsername(), login.getPassword());
                 faculty.facultyLogic();
