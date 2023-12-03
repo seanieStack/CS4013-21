@@ -15,6 +15,3 @@ public class App {
     }
 }
 
-// read me
-// javadoc
-// diagrams
