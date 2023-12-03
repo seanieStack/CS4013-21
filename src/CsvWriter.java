@@ -6,11 +6,21 @@ import java.util.List;
 import java.io.FileWriter;
 import java.util.Arrays;
 
-
+/**
+ * The CsvWriter class provides methods for editing rows/columns in a CSV file.
+ */
 
 public class CsvWriter {
 
-    // Constructor that reads the CSV data
+      /**
+     * Edits the data in a specific row/column of a CSV.
+     *
+     * @param csvFilePath    The path of the CSV file.
+     * @param username       The student username used to identify the row.
+     * @param strColumnIndex The index of the column that will be edited.
+     * @param newData        The new data to be put in the provided column.
+     */
+    
     public void modifySpecificRowInCsv(String csvFilePath, String username, String strColumnIndex, String newData) {
     List<String> fileContent = new ArrayList<>();
     boolean rowFound = false;
@@ -54,7 +64,16 @@ public class CsvWriter {
         e.printStackTrace();
     }
 }
-
+       /**
+     * Appends a new row to the CSV or updates an existing row in the CSV based on the user input.
+     *
+     * @param csvFilePath The path of the CSV file.
+     * @param username    The student username used to identify the row.
+     * @param moduleCode  The module code used to identify the row.
+     * @param semester    The semester used to identify the row.
+     * @param newData     The new data to put in the provided row.
+     */
+    
 public void appendOrUpdateRow(String csvFilePath, String username, String moduleCode, String semester, String newData) {
     List<String> fileContent = new ArrayList<>();
     boolean rowFound = false;
