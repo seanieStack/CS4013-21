@@ -1,14 +1,14 @@
-/** Command-line interface class for inteacting with App
-    *Handles user input and directs users to the correct functionality based on their divisions(Student, Faculty, Department)
+/** 
+Command-line interface class for inteacting with App
+Handles user input and directs users to the correct functionality based on their divisions(Student, Faculty, Department)
 */
 public class CommandLineInterface {
      //Creates object of the Login class
     Login login;
 
     /** Runs the command-line interface 
- * Creates objects of the different classes based off the user division and passes username and password from Login class to them
-*
-*/ 
+    * Creates objects of the different classes based off the user division and passes username and password from Login class to them
+    */ 
     
     public void run() {
         //New login object
