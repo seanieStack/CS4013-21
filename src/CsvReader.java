@@ -7,7 +7,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Utility class that reads data from CSV's.
+ */
+
 public class CsvReader {
+      /**
+     * Reads CSV data from the provided file path.
+     *
+     * @param csvFilePath The path of the CSV file.
+     * @return A list of String arrays representing the data read from the CSV.
+     */
     public List<String[]> CsvSearch (String csvFilePath) {
 
         final List<String[]> csvData = new ArrayList<>();
@@ -22,7 +32,12 @@ public class CsvReader {
         }
         return csvData ; 
     }
-
+     /**
+     * Reads grades data from the provided file path.
+     *
+     * @param fileName The path of the file containing the grades.
+     * @return A map with student usernames as keys and their grades as values.
+     */
     public Map<String, Double> readGrade(String fileName) {
         Map<String, Double> grades = new HashMap<>();
         boolean firstLine = true;
