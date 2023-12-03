@@ -1,16 +1,32 @@
 import java.util.*;
 
+/**
+ * Represents a Person that is a faculty member.
+ */
+
 public class Faculty extends Person {
     Scanner scanner;
     Transcript transcript;
     CsvReader reader;
 
+    /**
+     * Constructs a Faculty object with the provided username and password.
+     *
+     * @param username The username of the faculty member.
+     * @param password The password of the faculty member.
+     */
+    
     public Faculty(String username, String password) {
         super(username, password);
         scanner = new Scanner(System.in);
         transcript = new Transcript();
         reader = new CsvReader();
     }
+
+    /**
+     * Handles the logic for faculty tasks, such as running the exam board,
+     * viewing transcripts, identifying at risk students, and reviewing student progression.
+     */
 
     public void facultyLogic(){
         System.out.println("Press (R) to run exam board, Please note the next exam board meets on the 31/1/24");
@@ -27,14 +43,11 @@ public class Faculty extends Person {
                         // Handle View Transcript
                         System.out.println("Please enter the student number of the students Transcript that you wish to view ");
                         String selectedStudentNumber = scanner.nextLine() ;
-                        System.out.println(transcript.printTranscript(selectedStudentNumber)); //TODO: Fix this stupid shit
+                        System.out.println(transcript.printTranscript(selectedStudentNumber)); 
                     }
                     case "I" -> {
                         // Handle Identify At-Risk Students
                         System.out.println("Identifying at-risk students...");
-                        // Scan cummulative QCA from grades csv and print student number , users can view transcript from there
-                        // Also print all Students with a QCA < 2 in Semester 1
-
                         List<String[]> csvData = reader.CsvSearch("./src/data/StudentGrades.csv");
                         Map<Integer, List<String>> studentGrades = new HashMap<>();
                         for (int i = 1; i < csvData.size(); i++) {
@@ -52,8 +65,6 @@ public class Faculty extends Person {
                         }
                     }
                     case "R" -> {
-                        // Handle Review Student Progression
-                        //COMMENT: Don't think this needs any more changes ,Students should automatically pass if QCA >= 2, Maybe we should ask him for some clarification on this
                         System.out.println("Reviewing student progression...");
                         System.out.println("Please enter the student number of the student you wish to review");
                         String selectedStudentNumber = scanner.nextLine() ;
@@ -69,7 +80,7 @@ public class Faculty extends Person {
 
                             }
                             else if (commandApprove.equals("N")) {
-                                transcript.setRequestResult(true, selectedStudentNumber); //TODO: Change to false , N = Deny , test and review for push
+                                transcript.setRequestResult(true, selectedStudentNumber); 
                                 System.out.println("Your decision has being recorded and is now reflected on the students transcript , add your justification for this decision below");
                                 String approveComments = scanner.nextLine();
                                 transcript.setRequestComments(selectedStudentNumber, approveComments);
@@ -79,7 +90,7 @@ public class Faculty extends Person {
                         }
 
                     }
-                    case "B" -> backToFacultyMenu = true; // Set flag to true to go back to the previous menu,
+                    case "B" -> backToFacultyMenu = true; // Set flag to true to go back to the previous menu,TODO:
                     default -> System.out.println("Invalid Input! Please select a valid option");
                 }
             }
