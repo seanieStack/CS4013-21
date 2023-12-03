@@ -1,17 +1,35 @@
 import java.util.Calendar;
 import java.util.Scanner;
 
+    /** 
+    Extends the Person class and includes additional methods like submitting acedemic results for students
+    */
+
 public class Department extends Person{
     Scanner scanner;
     Transcript transcript;
     Login login;
+
+    /**
+    Constructor for the Department class
+    *@param username -the departments username
+    *@param password -the departments password
+    */
+    
     public Department(String username, String password){
         super(username, password);
         scanner = new Scanner(System.in);
+        //Transcript object for handling student records
         transcript = new Transcript();
+        //Login Object
         login = new Login();
     }
 
+    /**
+    Method that handles all Department Logic
+    ,allows department to submit student results
+    */
+    
     public void departmentLogic(){
 
         System.out.print("Use command (S) to (S)ubmit results");
@@ -52,7 +70,7 @@ public class Department extends Person{
             while (!correctYear) {
             System.out.println("Please enter the AY year in which this grade was taken");
              ay = scanner.nextLine().toUpperCase();
-            if(ay.length() == 9 && ay.charAt(4) == '/')  { //Comment: Not fully correct but covers most cases 
+            if(ay.length() == 9 && ay.charAt(4) == '/')  {  
                 correctYear = true;
             }
             String semester = Modules.getModuleSemester(moduleCode);
