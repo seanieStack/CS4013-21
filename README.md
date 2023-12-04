@@ -8,7 +8,7 @@ The project offers three user roles: "Faculty," "Department," and "Student," acc
 ## Contriubters
 **Name:** Mark Callan (22363246)  
 **Name:** Seanie Stack 22374302) 
-**Name:** Adam Herron (22362029)  
+**Name:** Adam Herron (22362029) 
 **Name:** Jason Cushen (22342516)  
 
 ### Prerequisites
