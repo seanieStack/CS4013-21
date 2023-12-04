@@ -1,4 +1,3 @@
-import java.util.Calendar;
 import java.util.Scanner;
 
     /** 
@@ -16,13 +15,13 @@ public class Department extends Person{
     *@param password -the departments password
     */
     
-    public Department(String username, String password){
+    public Department(String username, String password, Login login){
         super(username, password);
         scanner = new Scanner(System.in);
         //Transcript object for handling student records
         transcript = new Transcript();
         //Login Object
-        login = new Login();
+        this.login = login;
     }
 
     /**
@@ -32,7 +31,7 @@ public class Department extends Person{
     
     public void departmentLogic(){
 
-        System.out.print("Use command (S) to (S)ubmit results");
+        System.out.println("Use command (S) to (S)ubmit results");
         String commandSubmit = scanner.nextLine().toUpperCase();
 
         if (commandSubmit.equals("S")) {
@@ -66,10 +65,9 @@ public class Department extends Person{
                 }
             }
             boolean correctYear = false ;
-            String ay = "       ";
             while (!correctYear) {
             System.out.println("Please enter the AY year in which this grade was taken");
-             ay = scanner.nextLine().toUpperCase();
+            String ay = scanner.nextLine().toUpperCase();
             if(ay.length() == 9 && ay.charAt(4) == '/')  {  
                 correctYear = true;
             }

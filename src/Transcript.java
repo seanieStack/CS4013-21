@@ -1,5 +1,6 @@
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -13,7 +14,6 @@ public class Transcript {
 
     CsvReader reader = new CsvReader();
     CsvWriter writer = new CsvWriter();
-    QcaCalc calculator = new QcaCalc();
     
       /**
      * Prints the provided text centered within a given width.

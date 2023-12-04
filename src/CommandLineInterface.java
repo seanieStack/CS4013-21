@@ -27,7 +27,7 @@ public class CommandLineInterface {
             }
             case "Department" -> {
                 //Creates Department object and puts the login details into it
-                Department department = new Department(login.getUsername(), login.getPassword());
+                Department department = new Department(login.getUsername(), login.getPassword(), login);
                 department.departmentLogic();
             }
             //Displays Error message
