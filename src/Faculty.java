@@ -60,12 +60,12 @@ public class Faculty extends Person {
                         for(Map.Entry<Integer, List<String>> entry : studentGrades.entrySet()){
                             String[] grades = entry.getValue().toArray(new String[0]);
                             if(QcaCalc.getCummulativeQca(grades) <= 2.0){
-                                System.out.println(entry.getKey() + ":" + QcaCalc.getCummulativeQca(grades));
+                              System.out.println("Student ("+entry.getKey() + ") has a QCA of : " + QcaCalc.getCummulativeQca(grades));
                             }
                         }
                     }
                     case "R" -> {
-                        System.out.println("Reviewing student progression...");
+                        System.out.println("Reviewing student progression...(QCA under 2)");
                         System.out.println("Please enter the student number of the student you wish to review");
                         String selectedStudentNumber = scanner.nextLine() ;
                         if (transcript.getResultsData(selectedStudentNumber, 1 )!= null) {
