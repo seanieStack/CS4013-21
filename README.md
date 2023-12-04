@@ -25,7 +25,7 @@ git clone https://github.com/seanieStack/CS4013-21.git
 ## Installation and Running the Project
 To complile the project run the following command in your terminal :
 ```bash
-java.c app.java
+javac app.java
  ```
 
 ## Logging in to the sytem
