@@ -282,7 +282,7 @@ public class Transcript {
                 "\n\n" +
                 "Semester 2 QCA : " + calculateQcaForStudent( studentNumber, "2","2023/2024") +
                 "\n\n" +
-                "Cummulative QCA for Student ()" + studentNumber +") :" + (calculateQcaForStudent( studentNumber, "1","2023/2024") + calculateQcaForStudent( studentNumber, "2","2023/2024") /2 ) +
+                "Cummulative QCA for Student (" + studentNumber +") :" + (calculateQcaForStudent( studentNumber, "1","2023/2024") + calculateQcaForStudent( studentNumber, "2","2023/2024") /2 ) +
                 "\n\n" ;
     }
 }
