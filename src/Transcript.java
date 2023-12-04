@@ -13,7 +13,8 @@ public class Transcript {
 
     CsvReader reader = new CsvReader();
     CsvWriter writer = new CsvWriter();
-
+    QcaCalc calculator = new QcaCalc();
+    
       /**
      * Prints the provided text centered within a given width.
      *
@@ -178,6 +179,50 @@ public class Transcript {
             .collect(Collectors.joining("\n"));
     }
 
+    /**
+    * Retrieves a list of grades for a specific student, semester, and academic year.
+    * 
+    * @param username The student number to match in the CSV data.
+    * @param semester The semester to filter the grades.
+    * @param ay The academic year to filter the grades.
+    * @return A list of grades (as strings) for the specified student, semester, and academic year.
+    */
+
+     public List<String> getSemesterGrades( String username, String semester,String ay) {
+        // Create an instance of csvReader to use its CsvSearch method
+        List<String[]> csvData = reader.CsvSearch("CS4013-21/src/data/StudentGrades.csv");
+        List<String> grades = new ArrayList<>();
+
+        for (String[] row : csvData) {
+            // Check if the row matches the username and semester
+            if (row[0].equals(username) && row[2].equals(semester)&& row[3].equals(ay)) {
+                grades.add(row[4]); // Add the grade to the list
+            }
+        }
+
+        return grades;
+    }
+
+    /**
+    * Calculates the  (QCA) for a student for a given semester and academic year.
+    * This method first retrieves the grades for the specified criteria and then computes the QCA,
+    * rounding it to two decimal points.
+    * 
+    * @param studentNumber The student number for which the QCA is to be calculated.
+    * @param semester The semester for which the QCA is to be calculated.
+    * @param ay The academic year for which the QCA is to be calculated.
+    * @return The calculated QCA, rounded to two decimal points.
+    */
+    
+    public double calculateQcaForStudent( String studentNumber, String semester,String ay) {
+        List<String> grades = getSemesterGrades( studentNumber, semester,ay);
+        String[] gradesArray = grades.toArray(new String[0]); // Convert List to Array
+        double qca = QcaCalc.getCummulativeQca(gradesArray);
+        return Double.parseDouble(String.format("%.2f", qca));
+    }
+
+
+
         /**
      * Prints the complete student transcript for the provided student number.
      *
@@ -230,7 +275,15 @@ public class Transcript {
                 getMultipleColumns(studentNumber, "1") + 
                 "\n\n" +
                 getMultipleColumns(studentNumber, "2") +
-                "\n";
+                "\n\n" +
+                "Semester 1 QCA : " + calculateQcaForStudent( studentNumber, "1","2023/2024") +
+                "\n\n" +
+                getMultipleColumns(studentNumber, "2") +
+                "\n\n" +
+                "Semester 2 QCA : " + calculateQcaForStudent( studentNumber, "2","2023/2024") +
+                "\n\n" +
+                "Cummulative QCA for Student ()" + studentNumber +") :" + (calculateQcaForStudent( studentNumber, "1","2023/2024") + calculateQcaForStudent( studentNumber, "2","2023/2024") /2 ) +
+                "\n\n" ;
     }
 }
 
